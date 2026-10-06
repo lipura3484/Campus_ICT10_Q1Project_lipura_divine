@@ -8,8 +8,6 @@ def create_order(e):
     prod5 = document.getElementById("item5")
     prod6 = document.getElementById("item6")
     prod7 = document.getElementById("item7")
-    prod8 = document.getElementById("item8")
-    prod9 = document.getElementById("item9")
 
     subtotal = (
         float(prod1.value) * prod1.checked +
@@ -19,8 +17,7 @@ def create_order(e):
         float(prod5.value) * prod5.checked +
         float(prod6.value) * prod6.checked +
         float(prod7.value) * prod7.checked +
-        float(prod8.value) * prod8.checked +
-        float(prod9.value) * prod9.checked
+
     )
 
     tax_rate = 0.12
