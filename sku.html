@@ -1,0 +1,164 @@
+!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SKU Generator</title>
+
+    <style>
+         body {
+    
+    background-image: url('Sari-Sari Store Poster.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #f0f0f0;
+}
+
+        .container {
+            background-color: white;
+            width: 350px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px gray;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e99621;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #e99621;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #93c5fd;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #e99621;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e99621;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #eff6ff;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            color: #e99621;
+        }
+
+        a {
+            color: #e99621;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>SKU Generator</h1>
+
+        <p>Create your product code.</p>
+
+        <label>Product Category</label>
+
+        <select id="category">
+            <option value="CAN">CANDY</option>
+            <option value="SNAC">SNACKS</option>
+            <option value="MEA">MEAL</option>
+            <option value="DRIN">DRINKS
+            </option>
+            <option value="SABO">SABON</option>
+            <option value="FOO">DOG OR CAT FOOD</option>
+            <option value="DELA">DELATA</option>
+        </select>
+
+        <label>Product Name</label>
+
+        <input type="text" id="product" placeholder="Enter product name">
+
+        <label>Stock Quantity</label>
+
+        <input type="number" id="quantity" placeholder="Enter quantity">
+
+        <button onclick="generateSKU()">
+            Generate SKU
+        </button>
+
+        <div id="result">
+            yohoo dito ang tingin
+        </div>
+
+        <p>
+            <a href="index.html">Back to Dashboard</a>
+        </p>
+
+        <p>
+            <a href="receipt.html">Receipt Generator</a>
+        </p>
+
+    </div>
+
+    <script>
+
+        function generateSKU() {
+
+            let category = document.getElementById("category").value;
+            let product = document.getElementById("product").value;
+            let quantity = document.getElementById("quantity").value;
+
+            if (product == "" || quantity == "") {
+
+                document.getElementById("result").innerHTML =
+                    "Please complete all fields.";
+
+                return;
+            }
+
+            let productCode = product
+                .toUpperCase()
+                .replace(/[^A-Z0-9]/g, "")
+                .substring(0, 3);
+
+            let sku = category + "-" + productCode + "-" + quantity;
+
+            document.getElementById("result").innerHTML =
+                "Generated SKU: " + sku;
+        }
+
+    </script>
+
+</body>
+
+</html>
